@@ -11,7 +11,7 @@ import path, { dirname } from "path";
 
 await connectToDB();
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 10000; // In this case, You will need to change this port after successful deployment from render.com
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,6 +35,11 @@ app.use("/api/user", userRoute); // Corrected the route
 app.use(express.static(path.join(__dirname, "client", "dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "client", "dist", "index.html"));
+});
+
+app.get("/health", (req, res) => {
+  // Health check endpoint: https://your-app-name.onrender.com/health
+  res.status(200).send("OK");
 });
 
 app.listen(port, () => {

@@ -7,9 +7,12 @@ export default function Logout() {
 
   const handleLogout = async () => {
     try {
-      await axios.get("/app/user/logout", {
-        withCredentials: true,
-      });
+      await axios.get(
+        "https://signup-login-render.onrender.com/api/user/logout",
+        {
+          withCredentials: true,
+        }
+      );
       navigate("/");
     } catch (error) {}
   };
@@ -23,4 +26,18 @@ export default function Logout() {
       <h1>Logging out...</h1>
     </div>
   );
+}
+
+{
+  /**
+  * 
+  * Optional Tip:
+  * If you want to avoid changing URLs manually in multiple places,
+  * you can store the base API URL in an environment variable in your frontend code, like:
+  * const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+  * await axios.post(`${API_BASE_URL}/api/user/register`, data, {
+  withCredentials: true,
+});
+
+   */
 }

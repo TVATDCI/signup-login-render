@@ -6,9 +6,12 @@ export default function Admin() {
 
   const getAdmin = async () => {
     try {
-      await axios.get("/app/user/admin", {
-        withCredentials: true,
-      });
+      await axios.get(
+        "https://signup-login-render.onrender.com/api/user/admin",
+        {
+          withCredentials: true,
+        }
+      );
 
       setIsAuthorized(1);
     } catch (error) {

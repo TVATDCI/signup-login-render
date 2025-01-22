@@ -22,9 +22,13 @@ export default function Login() {
     };
 
     try {
-      await axios.post("http://localhost:3001/api/user/login", data, {
-        withCredentials: true,
-      });
+      await axios.post(
+        "https://signup-login-render.onrender.com/api/user/login",
+        data,
+        {
+          withCredentials: true,
+        }
+      );
       setFormSuccess(true);
       setTimeout(() => {
         setFormSuccess(false);
