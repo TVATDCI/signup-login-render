@@ -11,6 +11,9 @@ This project demonstrates the use of HTTP-only cookies to enhance security by pr
     - [Frontend](#frontend)
     - [Backend](#backend)
   - [Installation](#installation)
+  - [Pre-Deployment Preparation](#pre-deployment-preparation)
+    - [1. Setting up MongoDB Atlas](#1-setting-up-mongodb-atlas)
+    - [2. Testing the Backend API](#2-testing-the-backend-api)
   - [Usage](#usage)
   - [Project Structure](#project-structure)
   - [Deployment on Render.com](#deployment-on-rendercom)
@@ -59,6 +62,38 @@ npm install
 npm install --prefix client
 ```
 
+## Pre-Deployment Preparation
+
+### 1. Setting up MongoDB Atlas
+
+1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and sign in.
+2. Create a new project and cluster.
+3. Add a new database user with proper permissions.
+4. Allow IP access (0.0.0.0/0 for testing purposes).
+5. Copy the connection string and update your `.env` file:
+
+```sh
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
+
+### 2. Testing the Backend API
+
+1. Start the backend server:
+
+```sh
+npm start
+```
+
+2. Use Postman or cURL to test the API endpoints:
+
+- **Signup:** `POST http://localhost:5000/api/auth/signup`
+- **Login:** `POST http://localhost:5000/api/auth/login`
+- **Get User Profile (Protected Route):** `GET http://localhost:5000/api/auth/profile`
+
+Ensure everything works correctly before proceeding to deployment.
+
 ## Usage
 
 1. Start the backend server:
@@ -81,44 +116,43 @@ npm run client-dev
 .env
 .gitignore
 client/
-    .gitignore
-    package.json
-    public/
-    README_DE.md
-    src/
-        components/
-            Admin/
-                Admin.jsx
-            Login/
-                Login.jsx
-            Logout/
-                Logout.jsx
-            NavBar/
-                NavBar.jsx
-            Register/
-                Register.jsx
-        index.css
-        main.jsx
-    vite.config.js
+	.gitignore
+	public/
+	README_DE.md
+	src/
+		components/
+			Admin/
+				Admin.jsx
+			Login/
+				Login.jsx
+			Logout/
+				Logout.jsx
+			NavBar/
+				NavBar.jsx
+			Register/
+				Register.jsx
+		index.css
+		main.jsx
+	vite.config.js
 controllers/
-    user.js
+	user.js
 libs/
-    db.js
-    jwt.js
+	db.js
+	jwt.js
 middleware/
-    auth.js
+	auth.js
 models/
-    User.js
+	User.js
 package.json
 README.md
 routes/
-    userRoute.js
+	userRoute.js
 server.js
 ```
 
 ## Deployment on Render.com
 
-1. Create a new web service on Render.com.
+1. Create a new web service on [Render.com](https://render.com).
 2. Connect your GitHub repository to Render.
 3. Set the build command to:
 
@@ -133,7 +167,7 @@ node server.js
 ```
 
 5. Ensure that the `PORT` environment variable is set to the port Render expects.
-6. Add any other necessary environment variables (e.g., `MONGO_URI`, `JWT_SECRET`, etc.).
+6. Add other necessary environment variables (`MONGO_URI`, `JWT_SECRET`, etc.).
 7. Deploy the service.
 8. Monitor the deployment logs to ensure the build and deployment are successful.
 
