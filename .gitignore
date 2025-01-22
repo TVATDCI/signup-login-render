@@ -1,3 +1,15 @@
+# Environments
 .env
+# Node Modules
 node_modules/
+# Logs
 log/
+*.log
+# os and editor files
+.DS_Store
+.vscode/
+.idea/
+# Build output
+dist/
+build/
+coverage/

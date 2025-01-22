@@ -11,7 +11,7 @@ import path, { dirname } from "path";
 
 await connectToDB();
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -32,9 +32,9 @@ app.use("/api/user", userRoute); // Corrected the route
 
 // !! Your middleware should not go below this line !!
 // Serve frontend client/dist folder
-app.use(express.static(path.join(__dirname, "client/dist")));
+app.use(express.static(path.join(__dirname, "client", "dist")));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/dist/index.html"));
+  res.sendFile(path.join(__dirname + "client", "dist", "index.html"));
 });
 
 app.listen(port, () => {
