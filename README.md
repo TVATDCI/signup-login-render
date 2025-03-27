@@ -118,7 +118,6 @@ npm run client-dev
 client/
 	.gitignore
 	public/
-	README_DE.md
 	src/
 		components/
 			Admin/
