@@ -7,12 +7,12 @@ export const admin = async (req, res) => {
   res.send("You are authorized to view this content");
 };
 
-// Register route/new user
+// Register route/new user - Registration logic checked!
 export const register = async (req, res) => {
   try {
     const { username, firstname, lastname, email, password } = req.body;
 
-    // Check if user already exists
+    // Check if user already exists checked!
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res.status(400).send("User already exists");
@@ -40,7 +40,7 @@ export const register = async (req, res) => {
   }
 };
 
-//User login
+//User login logic checked!
 export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -59,12 +59,12 @@ export const login = async (req, res) => {
       return res.status(400).send("Invalid credentials");
     }
 
-    // Generate JWT token
+    // Generate JWT token - Issue JWT checked!
     const token = issueJwt(user);
 
     // Send the token as an httpOnly cookie
     res.cookie("jwt", token, {
-      httpOnly: true,
+      httpOnly: true, // security measure!
       secure: false, // Set to true in production with HTTPS
       sameSite: "lax",
     });
@@ -72,12 +72,12 @@ export const login = async (req, res) => {
     res.status(200).json({ message: "User logged in successfully" });
     console.log("User logged in successfully");
   } catch (error) {
-    console.error("Error during login:", error); // Log the error
+    console.error("Error during login:", error.message); // Log the error with.message
     res.status(500).send({ message: "Error failed to login" });
   }
 };
 
-// User logout
+// User logout - Logout logic checked!
 export const logout = async (req, res) => {
   res
     .clearCookie("jwt", {

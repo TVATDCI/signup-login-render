@@ -13,3 +13,7 @@ router.get("/logout", logout);
 router.post("/register", register);
 
 export default router;
+
+// Path: controllers/user.js
+// It going to be exported to the userRoute.js
+// as the mount of the userRoute into the app/routes stack in server.js!

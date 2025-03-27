@@ -4,14 +4,14 @@ dotenv.config();
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import express from "express";
-import connectToDB from "./libs/db.js";
 import userRoute from "./routes/userRoute.js";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 
+import connectToDB from "./libs/db.js";
 await connectToDB();
 
-const port = process.env.PORT || 10000; // In this case, You will need to change this port after successful deployment from render.com
+const port = process.env.PORT || 5000; // In this case, You will need to change this port after successful deployment from render.com
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -27,14 +27,14 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 
-// Middleware routes
-app.use("/api/user", userRoute); // Corrected the route
+// Routes stack
+app.use("/api/user", userRoute); // Mount the userRoute at /api/user
 
 // !! Your middleware should not go below this line !!
 // Serve frontend client/dist folder
 app.use(express.static(path.join(__dirname, "client", "dist")));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "client", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 app.get("/health", (req, res) => {
