@@ -156,7 +156,7 @@ server.js
 3. Set the build command to:
 
 ```sh
-npm install && npm install --prefix client && npm run build --prefix client
+npm run client-setup
 ```
 
 4. Set the start command to:
