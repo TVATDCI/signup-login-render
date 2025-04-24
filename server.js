@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const clientUrl = process.env.FRONTEND_URL;
 
-// Middleware stack
+// #Middleware stack
 app.use(
   cors({
     origin: clientUrl, // Allow requests from the frontend URL
@@ -30,7 +30,7 @@ app.use(express.json());
 // Routes stack
 app.use("/api/user", userRoute); // Mount the userRoute at /api/user
 
-// !! Your middleware should not go below this line !!
+// #Your middleware should not go below this line !!
 // Serve frontend client/dist folder
 app.use(express.static(path.join(__dirname, "client", "dist")));
 app.get("*", (req, res) => {
