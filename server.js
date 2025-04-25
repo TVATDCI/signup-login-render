@@ -20,7 +20,7 @@ const clientUrl = process.env.FRONTEND_URL;
 // # Flexible URL. to both local dev and production frontend.
 const allowedOrigins = [
   process.env.FRONTEND_URL || "http://localhost:5173",
-  process.env.FRONTEND_URL_PROD || "https://your-production-site.onrender.com",
+  process.env.FRONTEND_URL_PROD || "https://signup-login-render.onrender.com",
 ];
 
 // #Middleware stack
