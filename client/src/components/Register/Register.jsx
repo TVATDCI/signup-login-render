@@ -85,7 +85,7 @@ export default function Register() {
                 aria-describedby="my-helper-text"
               />
               <FormHelperText id="my-helper-text">
-                We'll never share your email.
+                We&apos;ll never share your email.
               </FormHelperText>
             </FormControl>
           </Grid>

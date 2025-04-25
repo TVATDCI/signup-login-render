@@ -43,10 +43,10 @@ export const register = async (req, res) => {
 //User login logic checked!
 export const login = async (req, res) => {
   try {
-    const { username, password } = req.body;
-
-    // Check if user exists in the database
-    const user = await User.findOne({ username });
+    const { email, password } = req.body;
+    //NOTE: login logic with username is changed to email instead!
+    // Check if user email exists in the database
+    const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
       console.log("User not found");
       return res.status(400).send("Invalid credentials");
