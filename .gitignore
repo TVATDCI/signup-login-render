@@ -1,6 +1,5 @@
-# Environments includes all (.env.*)
+# Environments 
 .env
-.env.*
 # Node Modules
 node_modules/
 # Logs
