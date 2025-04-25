@@ -7,23 +7,24 @@ export default function Logout() {
 
   const handleLogout = async () => {
     try {
-      await axios.get(
-        "https://signup-login-render.onrender.com/api/user/logout",
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/user/logout`, {
+        withCredentials: true,
+      });
       navigate("/");
-    } catch (error) {}
+    } catch (error) {
+      console.log("logout failed", error);
+    }
   };
-
+  // eslint moans handleLogout inside useEffect is not listed in the dependency!
+  // handleLogout is defined inside the component and does not depend on any props or state.
+  // To avoid: Use logout(); }, [];
   useEffect(() => {
     handleLogout();
   }, []);
 
   return (
     <div>
-      <h1>Logging out...</h1>
+      <h1>Logging out..!</h1>
     </div>
   );
 }

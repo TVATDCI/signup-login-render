@@ -27,7 +27,7 @@ export default function Register() {
 
     try {
       await axios.post(
-        "https://signup-login-render.onrender.com/api/user/register",
+        `${import.meta.env.VITE_API_BASE_URL}/api/user/register`,
         data,
         {
           withCredentials: true,

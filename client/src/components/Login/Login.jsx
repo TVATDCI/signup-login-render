@@ -23,12 +23,13 @@ export default function Login() {
 
     try {
       await axios.post(
-        "https://signup-login-render.onrender.com/api/user/login",
+        `${import.meta.env.VITE_API_BASE_URL}/api/user/login`,
         data,
         {
           withCredentials: true,
         }
       );
+
       setFormSuccess(true);
       setTimeout(() => {
         setFormSuccess(false);

@@ -17,13 +17,26 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const clientUrl = process.env.FRONTEND_URL;
 
+// # Flexible URL. to both local dev and production frontend.
+const allowedOrigins = [
+  process.env.FRONTEND_URL || "http://localhost:5173",
+  process.env.FRONTEND_URL_PROD || "https://your-production-site.onrender.com",
+];
+
 // #Middleware stack
 app.use(
   cors({
-    origin: clientUrl, // Allow requests from the frontend URL
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
+
 app.use(cookieParser());
 app.use(express.json());
 
