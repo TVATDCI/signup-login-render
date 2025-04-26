@@ -1,5 +1,7 @@
 # signup-login-render
 
+## login with email version (unmerged)
+
 This project demonstrates the use of HTTP-only cookies to enhance security by preventing client-side JavaScript from accessing cookie data. The project includes a frontend application built with React and Vite, and a backend application using Express and MongoDB.
 
 ## Table of Contents
