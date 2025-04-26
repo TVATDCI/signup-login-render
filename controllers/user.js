@@ -88,6 +88,7 @@ export const logout = async (req, res) => {
         sameSite: "lax",
       })
       .send("User logged out"); // Send response after clearing cookie
+    console.log("User Logged out");
   } catch (error) {
     console.error("Error during logout", error.message); // Log any potential errors during the logout process
     res.status(500).send("Error during logout"); // Respond with an error message if something goes wrong
