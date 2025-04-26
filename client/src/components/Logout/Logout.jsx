@@ -7,9 +7,12 @@ export default function Logout() {
 
   const handleLogout = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/user/logout`, {
-        withCredentials: true,
-      });
+      await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/api/user/logout`,
+        {},
+        { withCredentials: true }
+      );
+
       navigate("/");
     } catch (error) {
       console.log("logout failed", error);

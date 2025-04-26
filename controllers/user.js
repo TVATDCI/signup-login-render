@@ -79,13 +79,19 @@ export const login = async (req, res) => {
 
 // User logout - Logout logic checked!
 export const logout = async (req, res) => {
-  res
-    .clearCookie("jwt", {
-      httpOnly: true,
-      secure: false,
-      sameSite: "lax",
-    })
-    .send("User logged out");
+  try {
+    res
+      .clearCookie("jwt", {
+        httpOnly: true,
+        secure: false, // Set to true in production with HTTPS
+        sameSite: "lax",
+      })
+      .send("User logged out"); // Send response after clearing cookie
+    console.log("User Logged out");
+  } catch (error) {
+    console.error("Error during logout", error.message); // Log any potential errors during the logout process
+    res.status(500).send("Error during logout"); // Respond with an error message if something goes wrong
+  }
 };
 
 // Self note:
