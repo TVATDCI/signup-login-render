@@ -17,7 +17,7 @@ export default function Login() {
     const formData = new FormData(event.target);
 
     const data = {
-      username: formData.get("email"),
+      email: formData.get("email"),
       password: formData.get("password"),
     };
 
@@ -54,7 +54,7 @@ export default function Login() {
         <Grid container alignItems="flex-start" spacing={2}>
           <Grid item xs={12}>
             <FormControl>
-              <InputLabel htmlFor="username">User Email</InputLabel>
+              <InputLabel htmlFor="email">User Email</InputLabel>
               <Input name="email" type="email" id="email" required={true} />
             </FormControl>
           </Grid>
