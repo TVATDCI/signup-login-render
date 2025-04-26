@@ -30,14 +30,14 @@ This project demonstrates the use of HTTP-only cookies to enhance security by pr
 
 ## Features
 
-- ✅ User registration and login
-- ✅ Secure authentication using **JWT tokens**
-- ✅ HTTP-only cookies for enhanced security against XSS attacks
-- ✅ Protected routes accessible only to authenticated users
-- ✅ Password hashing using **bcrypt** for secure storage
-- ✅ Email-based login (instead of username) — [See Username Login version here](https://github.com/TVATDCI/signup-login-render/tree/feature/username-login)
-- ✅ Frontend/Backend separation (React + Express.js)
-- ✅ Error handling and user feedback (success/error alerts)
+- User registration and login
+- Secure authentication using **JWT tokens**
+- HTTP-only cookies for enhanced security against XSS attacks
+- Protected routes accessible only to authenticated users
+- Password hashing using **bcrypt** for secure storage
+- Email-based login (instead of username) — [See Username Login version here](https://github.com/TVATDCI/signup-login-render/tree/feature/username-login)
+- Frontend/Backend separation (React + Express.js)
+- Error handling and user feedback (success/error alerts)
 
 ## Technologies Used
 
