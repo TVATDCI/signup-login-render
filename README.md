@@ -73,7 +73,7 @@ cd signup-login-render
 
 ```sh
 npm install
-cd client && npm install && npm run dev"
+cd client && npm install && npm run dev
 ```
 
 ## Pre-Deployment Preparation
