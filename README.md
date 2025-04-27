@@ -184,4 +184,4 @@ node server.js
 7. Deploy the service.
 8. Monitor the deployment logs to ensure the build and deployment are successful.
 
-By following these steps, you should be able to deploy your project on Render.com successfully.
+Thanks for smiling ! :satisfied:
