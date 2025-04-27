@@ -1,5 +1,15 @@
 # signup-login-render
 
+## Login with username (current)
+
+This version of the project uses **Username and Password** for login.
+
+---
+
+## Prefer Username Login?
+
+You can check out the New **Email Login** version in the [`feature/username-login`](https://github.com/TVATDCI/signup-login-render/tree/feature/email-login) branch!
+
 This project demonstrates the use of HTTP-only cookies to enhance security by preventing client-side JavaScript from accessing cookie data. The project includes a frontend application built with React and Vite, and a backend application using Express and MongoDB.
 
 ## Table of Contents
@@ -21,9 +31,13 @@ This project demonstrates the use of HTTP-only cookies to enhance security by pr
 ## Features
 
 - User registration and login
-- Secure authentication using JWT tokens
-- HTTP-only cookies for enhanced security
-- Protected routes for authorized users
+- Secure authentication using **JWT tokens**
+- HTTP-only cookies for enhanced security against XSS attacks
+- Protected routes accessible only to authenticated users
+- Password hashing using **bcrypt** for secure storage
+- Email-based login (instead of username) — [See Username Login version here](https://github.com/TVATDCI/signup-login-render/tree/feature/email-login)
+- Frontend/Backend separation (React + Express.js)
+- Error handling and user feedback (success/error alerts)
 
 ## Technologies Used
 
@@ -59,7 +73,7 @@ cd signup-login-render
 
 ```sh
 npm install
-npm install --prefix client
+cd client && npm install && npm run dev
 ```
 
 ## Pre-Deployment Preparation
@@ -170,4 +184,4 @@ node server.js
 7. Deploy the service.
 8. Monitor the deployment logs to ensure the build and deployment are successful.
 
-By following these steps, you should be able to deploy your project on Render.com successfully.
+Thanks for smiling ! :satisfied:
