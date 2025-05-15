@@ -3,6 +3,7 @@
 ## Login with Email (current)
 
 This version of the project uses **Email and Password** for login.
+This controller handles user authentication and authorization for a Node.js/Express application using JWT and HTTP-only cookies. It includes secure registration with password hashing via bcrypt, login with credential verification, JWT token issuance, and logout by clearing the cookie. The JWT is stored in an httpOnly cookie to help protect against XSS attacks. Additionally, an admin route demonstrates how access to protected resources can be handled after authentication. The structure is modular and commented for educational clarity.
 
 ---
 
@@ -15,6 +16,8 @@ This project demonstrates the use of HTTP-only cookies to enhance security by pr
 ## Table of Contents
 
 - [signup-login-render](#signup-login-render)
+  - [Login with Email (current)](#login-with-email-current)
+  - [Prefer Username Login?](#prefer-username-login)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
@@ -126,7 +129,7 @@ npm run client-dev
 
 ## Project Structure
 
-```
+```bash
 .env
 .gitignore
 client/
