@@ -30,14 +30,17 @@ export async function authorizeJwt(req, res, next) {
 
     // NOTE: -password is changed to -hash as password is not in the model but hash!
     req.user = await User.findById(decoded.id).select("-hash"); // Exclude the hash field
+    // Or const user = await User.findById(decoded.id).select("-hash");
+    // req.user = user; Assign the user object to req.user
+    // just don't req.user = user; again. It will be undefined and BUG the whole admit logic!
 
     // If no matched user is found!
     if (!req.user) {
       return res.status(401).json({ message: "Unauthorized" });
     }
-    // If the token is valid, attach the user to the request object
-    req.user = user; // << implemented for learning purpose
 
+    // Log the user object for debugging
+    console.log("🔐Authenticated user:", req.user.username); // Uncomment for debugging
     // Proceed to the next middleware or route handler (routes/userRoute.js)
     next(); // Proceed to the next middleware or route handler
   } catch (error) {
