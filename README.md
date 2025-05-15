@@ -106,18 +106,29 @@ npm start
 signup-login-render/
 ├── .env
 ├── .gitignore
+├── README.md
+├── package.json
+├── server.js
 ├── client/
+│   ├── vite.config.js
 │   ├── public/
 │   └── src/
+│       ├── App.jsx
+│       ├── App.css
+│       ├── Auth.jsx
+│       ├── index.css
+│       ├── main.jsx
 │       └── components/
 │           ├── Admin/
+│           │   └── Admin.jsx
 │           ├── Login/
+│           │   └── Login.jsx
 │           ├── Logout/
+│           │   └── Logout.jsx
 │           ├── NavBar/
+│           │   └── NavBar.jsx
 │           └── Register/
-│       ├── index.css
-│       └── main.jsx
-│   └── vite.config.js
+│               └── Register.jsx
 ├── controllers/
 │   └── user.js
 ├── libs/
@@ -127,11 +138,8 @@ signup-login-render/
 │   └── auth.js
 ├── models/
 │   └── User.js
-├── routes/
-│   └── userRoute.js
-├── package.json
-├── server.js
-└── README.md
+└── routes/
+    └── userRoute.js
 ```
 
 Thanks for smiling ! :satisfied:
