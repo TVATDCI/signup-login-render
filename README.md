@@ -2,7 +2,7 @@
 
 ## Login with Email (current)
 
-This version of the project uses **Email and Password** for login.
+This version V1.1.0 of the project uses **Email and Password** for login.
 
 ---
 
@@ -15,6 +15,8 @@ This project demonstrates the use of HTTP-only cookies to enhance security by pr
 ## Table of Contents
 
 - [signup-login-render](#signup-login-render)
+  - [Login with Email (current)](#login-with-email-current)
+  - [Prefer Username Login?](#prefer-username-login)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
