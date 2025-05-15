@@ -1,187 +1,137 @@
-# signup-login-render
+# Signup-Login-Render
 
-## Login with Email (current)
-
-This version of the project uses **Email and Password** for login.
+A full-stack authentication project demonstrating secure user login and registration using **email and password**, JWT, and HTTP-only cookies. It features a React + Vite frontend, and an Express + MongoDB backend, structured for clarity and deployment-ready via [Render.com](https://render.com).
 
 ---
 
-## Prefer Username Login?
+### Current Login Method: Email & Password
 
-You can check out the old **Username Login** version in the [`feature/username-login`](https://github.com/TVATDCI/signup-login-render/tree/feature/username-login) branch!
+This version uses **email-based authentication**.
 
-This project demonstrates the use of HTTP-only cookies to enhance security by preventing client-side JavaScript from accessing cookie data. The project includes a frontend application built with React and Vite, and a backend application using Express and MongoDB.
+Key highlights:
 
-## Table of Contents
+- JWT-based session management
+- Secure password hashing with bcrypt
+- HTTP-only cookies to prevent XSS
+- Protected routes and admin access
+- Modular backend structure
+- React frontend with feedback messages
 
-- [signup-login-render](#signup-login-render)
+---
+
+### Prefer Username Login?
+
+Switch to the [`feature/username-login`](https://github.com/TVATDCI/signup-login-render/tree/feature/username-login) branch for a version that uses **username-based login**.
+
+---
+
+### Table of Contents
+
+- [Signup-Login-Render](#signup-login-render)
+  - [Current Login Method: Email \& Password](#current-login-method-email--password)
+  - [Prefer Username Login?](#prefer-username-login)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
     - [Frontend](#frontend)
     - [Backend](#backend)
-  - [Installation](#installation)
-  - [Pre-Deployment Preparation](#pre-deployment-preparation)
-    - [1. Setting up MongoDB Atlas](#1-setting-up-mongodb-atlas)
-    - [2. Testing the Backend API](#2-testing-the-backend-api)
-  - [Usage](#usage)
-  - [Project Structure](#project-structure)
-  - [Deployment on Render.com](#deployment-on-rendercom)
+    - [Installation](#installation)
+    - [Project Structure](#project-structure)
 
-## Features
+---
 
-- User registration and login
-- Secure authentication using **JWT tokens**
-- HTTP-only cookies for enhanced security against XSS attacks
-- Protected routes accessible only to authenticated users
-- Password hashing using **bcrypt** for secure storage
-- Email-based login (instead of username) — [See Username Login version here](https://github.com/TVATDCI/signup-login-render/tree/feature/username-login)
-- Frontend/Backend separation (React + Express.js)
-- Error handling and user feedback (success/error alerts)
+### Features
 
-## Technologies Used
+- Email/password registration and login
+- JWT-based authentication with `httpOnly` cookies
+- Protected routes for authenticated users
+- Admin route access demonstration
+- Password hashing using `bcrypt`
+- Clear error/success alerts in UI
+- React frontend + Express backend separation
 
-### Frontend
+---
 
-- **React**: A JavaScript library for building user interfaces.
-- **Vite**: A build tool that provides a faster and leaner development experience for modern web projects.
-- **Material-UI**: A popular React UI framework.
-- **Axios**: A promise-based HTTP client for the browser and Node.js.
-- **React Router**: A collection of navigational components for React applications.
+### Technologies Used
 
-### Backend
+#### Frontend
 
-- **Express**: A minimal and flexible Node.js web application framework.
-- **MongoDB**: A NoSQL database for storing user information.
-- **Mongoose**: An ODM (Object Data Modeling) library for MongoDB and Node.js.
-- **bcrypt**: A library to help hash passwords.
-- **jsonwebtoken**: A library to create and verify JSON Web Tokens (JWT).
-- **cookie-parser**: A middleware to parse cookies.
-- **cors**: A middleware to enable Cross-Origin Resource Sharing (CORS).
-- **dotenv**: A module to load environment variables from a `.env` file.
+- **React** – UI library
+- **Vite** – Build tool for lightning-fast development
+- **Material-UI** – Component styling
+- **Axios** – API communication
+- **React Router** – Frontend routing
 
-## Installation
+#### Backend
 
-1. Clone the repository:
+- **Express** – Node.js web framework
+- **MongoDB** – Database
+- **Mongoose** – MongoDB ODM
+- **bcrypt** – Password hashing
+- **jsonwebtoken** – JWT handling
+- **cookie-parser** – Cookie middleware
+- **cors** – Cross-origin requests
+- **dotenv** – Environment variables
 
-```sh
+---
+
+#### Installation
+
+1. **Clone the repository:**
+
+```bash
 git clone https://github.com/TVATDCI/signup-login-render.git
 cd signup-login-render
 ```
 
-2. Install dependencies for both frontend and backend:
+2 **Install dependencies:**
 
-```sh
+```bash
 npm install
-cd client && npm install && npm run dev
+cd client && npm install
 ```
 
-## Pre-Deployment Preparation
+3 **Run the frontend and backend:**
 
-### 1. Setting up MongoDB Atlas
-
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and sign in.
-2. Create a new project and cluster.
-3. Add a new database user with proper permissions.
-4. Allow IP access (0.0.0.0/0 for testing purposes).
-5. Copy the connection string and update your `.env` file:
-
-```sh
-MONGO_URI=your_mongodb_atlas_connection_string
-JWT_SECRET=your_jwt_secret
-PORT=5000
-```
-
-### 2. Testing the Backend API
-
-1. Start the backend server:
-
-```sh
-npm start
-```
-
-2. Use Postman or cURL to test the API endpoints:
-
-- **Signup:** `POST http://localhost:5000/api/auth/signup`
-- **Login:** `POST http://localhost:5000/api/auth/login`
-- **Get User Profile (Protected Route):** `GET http://localhost:5000/api/auth/profile`
-
-Ensure everything works correctly before proceeding to deployment.
-
-## Usage
-
-1. Start the backend server:
-
-```sh
-npm start
-```
-
-2. Start the frontend development server:
-
-```sh
+```bash
+# From root
 npm run client-dev
+# In another terminal
+npm start
 ```
 
-3. Open your browser and navigate to `http://localhost:5173`.
+#### Project Structure
 
-## Project Structure
-
+```pgsql
+signup-login-render/
+├── .env
+├── .gitignore
+├── client/
+│   ├── public/
+│   └── src/
+│       └── components/
+│           ├── Admin/
+│           ├── Login/
+│           ├── Logout/
+│           ├── NavBar/
+│           └── Register/
+│       ├── index.css
+│       └── main.jsx
+│   └── vite.config.js
+├── controllers/
+│   └── user.js
+├── libs/
+│   ├── db.js
+│   └── jwt.js
+├── middleware/
+│   └── auth.js
+├── models/
+│   └── User.js
+├── routes/
+│   └── userRoute.js
+├── package.json
+├── server.js
+└── README.md
 ```
-.env
-.gitignore
-client/
-	.gitignore
-	public/
-	src/
-		components/
-			Admin/
-				Admin.jsx
-			Login/
-				Login.jsx
-			Logout/
-				Logout.jsx
-			NavBar/
-				NavBar.jsx
-			Register/
-				Register.jsx
-		index.css
-		main.jsx
-	vite.config.js
-controllers/
-	user.js
-libs/
-	db.js
-	jwt.js
-middleware/
-	auth.js
-models/
-	User.js
-package.json
-README.md
-routes/
-	userRoute.js
-server.js
-```
-
-## Deployment on Render.com
-
-1. Create a new web service on [Render.com](https://render.com).
-2. Connect your GitHub repository to Render.
-3. Set the build command to:
-
-```sh
-npm run client-setup
-```
-
-4. Set the start command to:
-
-```sh
-node server.js
-```
-
-5. Ensure that the `PORT` environment variable is set to the port Render expects.
-6. Add other necessary environment variables (`MONGO_URI`, `JWT_SECRET`, etc.).
-7. Deploy the service.
-8. Monitor the deployment logs to ensure the build and deployment are successful.
 
 Thanks for smiling ! :satisfied:

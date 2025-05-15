@@ -21,7 +21,24 @@ export async function authorizeJwt(req, res, next) {
   try {
     // Verify the token using the verifyJwt function
     const decoded = verifyJwt(token);
-    req.user = await User.findById(decoded.id).select("-password"); // Attach decoded user to the request object
+
+    // Learning Debugging Block – Uncomment if needed:
+    // const user = await User.findById(decoded.id);
+    // console.log("User with hash:", user); // Includes hash
+    // const userSafe = await User.findById(decoded.id).select("-hash");
+    // console.log("User without hash:", userSafe); // Excludes hash
+
+    // NOTE: -password is changed to -hash as password is not in the model but hash!
+    req.user = await User.findById(decoded.id).select("-hash"); // Exclude the hash field
+
+    // If no matched user is found!
+    if (!req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    // If the token is valid, attach the user to the request object
+    req.user = user; // << implemented for learning purpose
+
+    // Proceed to the next middleware or route handler (routes/userRoute.js)
     next(); // Proceed to the next middleware or route handler
   } catch (error) {
     res.status(401).json({ message: "Unauthorized" });
